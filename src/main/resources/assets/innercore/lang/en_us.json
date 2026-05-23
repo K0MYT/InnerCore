@@ -1,0 +1,5 @@
+en_us:
+  item.innercore.inner_core_plate: Inner Core Plate
+  block.innercore.inner_core_plate: Inner Core Plate
+  innercore.tooltip.capacity: "Capacity: 216 blocks (6x6x6 grid)"
+  innercore.tooltip.use: "Right Click: Place/Open | Shift+Click: Remove/Interact"
