@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'net.neoforged.gradle.userdev' version '7.0.32'
+}
+
+version = "1.0.0"
+group = "com.k0myt.innercore"
+archivesBaseName = "innercore"
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+repositories {
+    mavenCentral()
+    maven { url = "https://maven.neoforged.net/releases" }
+    maven { url = "https://maven.neoforged.net/snapshots" }
+}
+
+dependencies {
+    implementation 'net.neoforged:neoforge:21.1.228'
+}
+
+tasks.named('jar', Jar) {
+    manifest {
+        attributes([
+            'Specification-Title'     : archivesBaseName,
+            'Specification-Vendor'    : 'K0MYT',
+            'Specification-Version'   : '1',
+            'Implementation-Title'    : project.name,
+            'Implementation-Version'  : project.jar.archiveVersion,
+            'Implementation-Vendor'   : 'K0MYT',
+            'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}
+
+tasks.named('processResources', ProcessResources) {
+    var replaceProperties = [
+        minecraft_version: '1.21.1', minecraft_version_range: '[1.21.1,)',
+        neo_version: '21.1.228', neo_version_range: '[21.1.228,)',
+        loader_version_range: '[2,)',
+        mod_id: 'innercore', mod_name: 'InnerCore', mod_license: 'MIT',
+        mod_authors: 'K0MYT', mod_description: 'Compact block storage with 6x6x6 grid'
+    ]
+    inputs.properties replaceProperties
+    filteringCharset 'UTF-8'
+    filesMatching(['META-INF/neoforge.mods.toml']) {
+        expand replaceProperties
+    }
+}
+
+sourceSets.main.resources {
+    srcDir 'src/main/resources'
+}
