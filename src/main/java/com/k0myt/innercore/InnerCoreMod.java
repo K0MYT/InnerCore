@@ -11,7 +11,7 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import com.k0myt.innercore.block.InnerCoreBlocks;
 import com.k0myt.innercore.blockentity.InnerCoreBlockEntities;
 import com.k0myt.innercore.item.InnerCoreItems;
-import com.k0myt.innercore.menu.InnerCoreMenus;
+import com.k0myt.innercore.menu.InnerCoreMenuTypes;
 
 @Mod(InnerCoreMod.MOD_ID)
 public class InnerCoreMod {
@@ -24,7 +24,7 @@ public class InnerCoreMod {
         InnerCoreBlocks.BLOCKS.register(modEventBus);
         InnerCoreItems.ITEMS.register(modEventBus);
         InnerCoreBlockEntities.BLOCK_ENTITIES.register(modEventBus);
-        InnerCoreMenus.MENUS.register(modEventBus);
+        InnerCoreMenuTypes.MENU_TYPES.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

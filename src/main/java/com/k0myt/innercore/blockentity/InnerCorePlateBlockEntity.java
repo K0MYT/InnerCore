@@ -20,6 +20,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.nbt.NbtUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.neoforged.neoforge.network.NetworkHooks;
+
+import com.k0myt.innercore.block.InnerCorePlateBlock;
+import com.k0myt.innercore.menu.InnerCoreContainerMenu;
 
 public class InnerCorePlateBlockEntity extends BlockEntity {
     public static final int GRID_SIZE = 6;
@@ -54,7 +58,7 @@ public class InnerCorePlateBlockEntity extends BlockEntity {
 
         public CompoundTag save() {
             CompoundTag tag = new CompoundTag();
-            tag.putString(TAG_BLOCK_STATE, state.toString());
+            tag.put(TAG_BLOCK_STATE, NbtUtils.writeBlockState(state));
             tag.put(TAG_BLOCK_DATA, data);
             return tag;
         }
@@ -115,7 +119,7 @@ public class InnerCorePlateBlockEntity extends BlockEntity {
     public boolean canPlaceBlockAt(BlockPos gridPos, BlockState state) {
         if (!isValidGridPos(gridPos)) return false;
         if (storedBlocks.containsKey(gridPos)) return false;
-        if (state.getBlock() instanceof com.k0myt.innercore.block.InnerCorePlateBlock) return false; // No nested plates
+        if (state.getBlock() instanceof InnerCorePlateBlock) return false; // No nested plates
         return true;
     }
 
@@ -202,8 +206,14 @@ public class InnerCorePlateBlockEntity extends BlockEntity {
      * Open the container menu for the player
      */
     public void openMenu(Player player) {
-        // TODO: Implement GUI menu
-        // For now, just print info
+        if (level != null && !level.isClientSide) {
+            NetworkHooks.openScreen((net.minecraft.server.level.ServerPlayer) player, 
+                new net.minecraft.world.SimpleMenuProvider(
+                    (windowId, playerInventory, playerEntity) -> 
+                        new InnerCoreContainerMenu(windowId, playerInventory, this.getBlockPos(), this),
+                    net.minecraft.network.chat.Component.literal("InnerCore Plate")
+                ));
+        }
     }
 
     /**
