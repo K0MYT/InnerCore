@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "innercore:item/inner_core_plate"
+  }
+}

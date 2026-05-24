@@ -1,0 +1,28 @@
+{
+  "modSchema": 2,
+  "modId": "innercore",
+  "displayName": "InnerCore",
+  "description": "Compact block storage mod - Place up to 216 blocks in a 6x6x6 grid on a single plate with full functionality preservation",
+  "version": "1.0.0",
+  "logoFile": "logo.png",
+  "authors": [
+    "K0MYT"
+  ],
+  "credits": "K0MYT",
+  "environment": "*",
+  "mods": [
+    {
+      "modId": "innercore",
+      "version": "1.0.0",
+      "displayName": "InnerCore",
+      "description": "Compact block storage mod with 6x6x6 grid support",
+      "logoFile": "logo.png",
+      "credits": "K0MYT",
+      "authors": [
+        "K0MYT"
+      ],
+      "displayURL": "https://github.com/K0MYT/InnerCore",
+      "changeLog": "Initial release"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
-ru_ru:
-  item.innercore.inner_core_plate: Пластина внутреннего ядра
-  block.innercore.inner_core_plate: Пластина внутреннего ядра
-  innercore.tooltip.capacity: "Вместимость: 216 блоков (сетка 6x6x6)"
-  innercore.tooltip.use: "ПКМ: Разместить/Открыть | Shift+Клик: Удалить/Взаимодействовать"
+{
+  "item.innercore.inner_core_plate": "Пластина внутреннего ядра",
+  "block.innercore.inner_core_plate": "Пластина внутреннего ядра",
+  "innercore.tooltip.capacity": "Вместимость: 216 блоков (сетка 6x6x6)",
+  "innercore.tooltip.use": "ПКМ: Разместить/Открыть | Shift+Клик: Удалить/Взаимодействовать"
+}

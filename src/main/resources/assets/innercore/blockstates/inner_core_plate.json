@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "innercore:block/inner_core_plate"
+    }
+  }
+}
